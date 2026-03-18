@@ -1,0 +1,100 @@
+# ------------------------------------------------------------
+# Public preview mode (proprietary code protection)
+# Keep project metadata/docs visible, hide high-value implementation.
+# ------------------------------------------------------------
+
+# Core proprietary engine
+src/passivesentry/core.py
+src/passivesentry/batch.py
+src/passivesentry/constants.py
+src/passivesentry/utils.py
+src/passivesentry/owasp_2025_reference.py
+
+# High-value OWASP modules and analyzers
+src/passivesentry/modules/*.py
+
+# Reporting intelligence (scoring, normalization, and templates)
+src/passivesentry/reporting/*.py
+src/passivesentry/reporting/templates/*.html
+
+# Operational/internal dashboard code
+scripts/streamlit_dashboard.py
+
+# CLI
+src/passivesentry/cli.py
+
+# Bytecode and runtime artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Test and coverage output
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+
+# Linters and type checkers
+.ruff_cache/
+.mypy_cache/
+.pytype/
+
+# Local tooling
+.python-version
+
+# IDE/editor folders
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# OS and temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+tmp/
+temp/
+
+# Secrets and local config
+.env
+.env.*
+secrets/
+credentials/
+
+# PassiveSentry generated outputs
+results/
+results_massive/
+test_results/
+*.log
+passivesentry_*.json
+passivesentry_*.pdf
+PassiveSentry_Report_*.pdf
+batch_execution_*.log
+batch_report_*.json
+*_executive.pdf
+domains.txt
+
+# Docs output
+docs/_build/
+site/

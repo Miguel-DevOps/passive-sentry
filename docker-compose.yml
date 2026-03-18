@@ -1,0 +1,21 @@
+services:
+  passivesentry:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: passivesentry-cli
+    volumes:
+      - ./results_massive:/app/results_massive
+      - ./domains.txt:/app/domains.txt:ro
+    command: ["passivesentry", "batch", "--input", "domains.txt", "--output", "results_massive"]
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: passivesentry-dashboard
+    volumes:
+      - ./results_massive:/app/results_massive
+    ports:
+      - "8501:8501"
+    command: ["streamlit", "run", "scripts/streamlit_dashboard.py", "--server.address=0.0.0.0", "--server.port=8501"]

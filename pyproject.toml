@@ -1,0 +1,63 @@
+[project]
+name = "passivesentry"
+version = "1.0.0"
+description = "Passive security auditing CLI tool (OSINT-only) mapped to OWASP Top 10 2025"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Miguel Lozano | Developmi", email = "miguel@developmi.com"}
+]
+maintainers = [
+    {name = "Miguel Lozano | Developmi", email = "miguel@developmi.com"}
+]
+dependencies = [
+    "click>=8.0.0",
+    "requests>=2.32.0",
+    "beautifulsoup4>=4.12.0",
+    "jinja2>=3.1.0",
+    "weasyprint>=66.0",
+    "dnspython>=2.4.0",
+    "python-dateutil>=2.8.0",
+    "colorama>=0.4.0",
+    "streamlit>=1.55.0",
+    "pandas>=2.3.3",
+    "plotly>=6.6.0",
+]
+
+[project.urls]
+Homepage = "https://developmi.com"
+Repository = "https://github.com/Miguel-DevOps/passivesentry"
+Issues = "https://github.com/Miguel-DevOps/passivesentry/issues"
+
+[project.scripts]
+passivesentry = "passivesentry.cli:main"
+
+[tool.hatch.build]
+packages = ["src/passivesentry"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = [
+    "--verbose",
+    "--tb=short",
+    "--strict-markers",
+    "--strict-config",
+]
+markers = [
+    "unit: unit tests",
+    "e2e: end-to-end tests",
+]
+filterwarnings = [
+    "ignore::pytest.PytestReturnNotNoneWarning",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+]
