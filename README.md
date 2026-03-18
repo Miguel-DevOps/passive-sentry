@@ -121,6 +121,12 @@ pip install -e .
 uv sync
 ```
 
+For development and testing dependencies:
+
+```bash
+uv sync --dev
+```
+
 ## CLI Usage
 
 Main command group:
