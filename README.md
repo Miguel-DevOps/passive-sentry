@@ -1,6 +1,12 @@
+<div align="center">
+
+<img src="docs/assets/passive-sentry.png" width="150" alt="Passive Sentry logo" />
+
 # PassiveSentry
 
 PassiveSentry is a passive (OSINT-only) security auditing framework aligned to OWASP Top 10 (A01-A10), with deterministic reporting for both executive and technical audiences.
+
+</div>
 
 ## Current Project Status
 
