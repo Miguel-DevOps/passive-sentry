@@ -4,18 +4,20 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: passivesentry-cli
+    user: "${UID:-1000}:${GID:-1000}"
     volumes:
-      - ./results_massive:/app/results_massive
+      - ./results:/app/results
       - ./domains.txt:/app/domains.txt:ro
-    command: ["passivesentry", "batch", "--input", "domains.txt", "--output", "results_massive"]
+    command: ["passivesentry", "batch", "--input", "domains.txt", "--output", "results"]
 
   dashboard:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: passivesentry-dashboard
+    user: "${UID:-1000}:${GID:-1000}"
     volumes:
-      - ./results_massive:/app/results_massive
+      - ./results:/app/results
     ports:
       - "8501:8501"
     command: ["streamlit", "run", "scripts/streamlit_dashboard.py", "--server.address=0.0.0.0", "--server.port=8501"]
