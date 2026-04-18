@@ -26,7 +26,7 @@ It is not intended to replace authenticated, active, or exploit-driven testing.
 - CLI entry points: [src/passivesentry/cli.py](../src/passivesentry/cli.py)
 - Batch execution: [src/passivesentry/batch.py](../src/passivesentry/batch.py)
 - OWASP module implementations: [src/passivesentry/modules/owasp_top10_2025.py](../src/passivesentry/modules/owasp_top10_2025.py)
-- Legacy analyzers (reused by wrappers): [src/passivesentry/modules/security_misconfiguration.py](../src/passivesentry/modules/security_misconfiguration.py), [src/passivesentry/modules/software_supply_chain.py](../src/passivesentry/modules/software_supply_chain.py), [src/passivesentry/modules/cryptographic_failures.py](../src/passivesentry/modules/cryptographic_failures.py), [src/passivesentry/modules/security_logging.py](../src/passivesentry/modules/security_logging.py)
+- Shared analyzers (used by OWASP wrappers): [src/passivesentry/modules/security_misconfiguration.py](../src/passivesentry/modules/security_misconfiguration.py), [src/passivesentry/modules/software_supply_chain.py](../src/passivesentry/modules/software_supply_chain.py), [src/passivesentry/modules/cryptographic_failures.py](../src/passivesentry/modules/cryptographic_failures.py), [src/passivesentry/modules/security_logging.py](../src/passivesentry/modules/security_logging.py)
 - Risk and finding normalization: [src/passivesentry/reporting/risk_scoring.py](../src/passivesentry/reporting/risk_scoring.py)
 - Report renderers: [src/passivesentry/reporting/json_reporter.py](../src/passivesentry/reporting/json_reporter.py), [src/passivesentry/reporting/pdf_reporter.py](../src/passivesentry/reporting/pdf_reporter.py)
 - PDF templates: [src/passivesentry/reporting/templates/executive_summary.html](../src/passivesentry/reporting/templates/executive_summary.html), [src/passivesentry/reporting/templates/full_technical_report.html](../src/passivesentry/reporting/templates/full_technical_report.html)
@@ -95,6 +95,7 @@ Batch mode in [src/passivesentry/batch.py](../src/passivesentry/batch.py):
 - Runs each domain through the same core pipeline
 - Supports parallel workers
 - Produces per-domain outputs plus batch summary
+- Default batch output root is `results`
 
 Per-domain artifact example:
 
@@ -124,10 +125,10 @@ It provides:
 
 ## Quality Gates and Verification
 
-Current automated status (last verified 2026-03-17):
+Current automated status (last verified 2026-04-06):
 
-- Full test suite passing: 33/33
-- Command used: uv run pytest -q
+- Full test suite passing: 40/40
+- Command used: uv run --python 3.14 pytest -q
 
 Test layout:
 
@@ -153,7 +154,8 @@ Recommended complement for mature security programs:
 
 - Stable for passive posture assessment workflows
 - Deterministic reporting model in place
+- Canonical CLI surface standardized on `passivesentry audit` and `passivesentry batch`
 - CLI, batch, reporting, and dashboard paths covered by tests
 - Suitable as a baseline engine for external security visibility
 
-Last updated: 2026-03-17
+Last updated: 2026-04-06
