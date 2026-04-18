@@ -1,6 +1,6 @@
 # PassiveSentry Technical Decisions
 
-Date: 2026-03-17
+Date: 2026-04-06
 
 This document records architectural and implementation decisions that shape the current release-ready state.
 
@@ -96,13 +96,14 @@ Future trigger for reevaluation:
 
 Decision:
 
-- Keep a simple CLI surface with full audit plus targeted legacy commands.
-- Keep batch processor as first-class path for domain lists.
+- Keep a canonical CLI surface centered on `audit` and module selectors (`-m`).
+- Keep batch processor as first-class path for domain lists and deterministic outputs.
 
 Why:
 
+- Reduces command-surface ambiguity and operational drift
+- Ensures one consistent invocation model for automation and analysts
 - Supports both quick checks and scaled external posture runs
-- Preserves operational compatibility while moving to canonical OWASP module IDs
 
 ## 7) Containerized Reproducibility
 
@@ -123,8 +124,8 @@ Decision:
 
 Current status:
 
-- Full suite passing: 33/33
-- Command: uv run pytest -q
+- Full suite passing: 40/40
+- Command: uv run --python 3.14 pytest -q
 
 ## 9) Known Non-Blocking Gaps
 
@@ -137,4 +138,4 @@ Recommended next hardening step:
 
 - Add CI pipeline for tests, lint, and packaging checks
 
-Last updated: 2026-03-17
+Last updated: 2026-04-06
