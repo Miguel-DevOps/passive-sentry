@@ -160,4 +160,4 @@ Recommended complementary controls:
 4. Operational telemetry validation (A09)
 5. Internal crypto and key-management assessments (A04)
 
-Last updated: 2026-03-17
+Last updated: 2026-04-06
